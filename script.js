@@ -1,46 +1,56 @@
 // Assignment Code
-let generateBtn = document.querySelector("#generate");
+var generateBtn = document.querySelector("#generate");
+
+function generatePassword() {
+  let length = parseInt(prompt('Choose a length between 8 - 128'))
+  let upper = confirm('Do you want uppercase?')
+  let lower = confirm('Do you want lowercase?')
+  let nums = confirm('Do you want numbers?')
+  let special = confirm('Do you want special?')
+  let upperChar = "QWERTYUIOPASDFGHJKLZXCVBNM"
+  let lowerChar = "qwertyuiopasdfghjklzxcvbnm"
+  let numsChar = "1234567890"
+  let specialChar = "!@#$%^&*()_+=<>?/|`~"
+
+  if (length < 129 || length > 7) {
+    let newPass = ""
+    let newPassChar = ""
+    if (upper) {
+      newPassChar += upperChar
+    }
+    if (lower) {
+      newPassChar += lowerChar
+    }
+    if (nums) {
+      newPassChar += numsChar
+    }
+    if (special) {
+      newPassChar += specialChar
+    }
+    console.log(newPassChar)
+    for (let i = 0; i < length; i++) {
+      let newChar = newPassChar[Math.floor(Math.random() * newPassChar.length)]
+      newPass += newChar
+
+    }
+    return newPass
+    console.log(generatePassword)
+
+  } else {
+    alert("INVALID LENGTH")
+  }
+
+
+
+
+}
 
 // Write password to the #password input
 function writePassword() {
-  let crit1 = prompt('How long would you like your password to be?(8-128): ')
-  let crit2 = prompt('Lower or Uppercase?(L/U): ')
-  let crit3 = prompt('Numerics? (Y/N): ')
-  let crit4 = prompt('Special Characters? (Y/N): ')
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
-  let list1 = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'Y', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-
-  let list2 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-
-  let list3 = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-
-  let list4 = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '[', '{', ']', '}', ':', ';', '<', ',', '.', '/', '?'];
-
-
-
-
-  let critR1 = parseInt(crit1, 10);
-  for (let i = 0; i < critR1; i++) {
-
-    if (crit2 === 'L') {
-      
-    }
-  }
-
-
-
-
-  let password = ""
-  }
-
-
-
-
-    passwordText.value = password;
-
-  let passwordText = document.querySelector("#password");
-
-
+  passwordText.value = password;
 
 }
 
